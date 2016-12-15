@@ -68,6 +68,12 @@ var o = { 'name' : 'Thluffy',
 	  }
 	};
 
+
+
 var b=document.getElementById('b');
 b.addEventListener('click',addItem);
 
+var items = document.getElementsByTagName('li');
+for (var i = 0; i < items.length; i++) {
+    items[i].addEventListener("click", function() {this.remove()} );
+}
