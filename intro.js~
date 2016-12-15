@@ -35,10 +35,10 @@ var factR = function(n) {
 
 
 //add list item 
-var addItem = function() {
+var addItem = function(text) {
     var list = document.getElementById("thelist");
     var newitem = document.createElement("li");
-    newitem.innerHTML = "item"+list.length;
+    newitem.innerHTML = text;
     list.appendChild(newitem);
 };
 
@@ -67,7 +67,4 @@ var o = { 'name' : 'Thluffy',
 	      return x+30;
 	  }
 	};
-
-var b=document.getElementById('b');
-b.addEventListener('click',addItem);
 
