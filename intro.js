@@ -1,7 +1,6 @@
 //send diagnostic output to console
 //(Ctrl-Shift-J in Chromium & Firefox to reveal console)
 console.log("AYO");
-
 var i = "hello";
 var j = 20;
 
@@ -40,6 +39,10 @@ var addItem = function() {
     var newitem = document.createElement("li");
     newitem.innerHTML = "item"+list.length;
     list.appendChild(newitem);
+    var items = document.getElementsByTagName('li');
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", function() {this.remove()} );
+    };
 };
 
 
@@ -60,20 +63,28 @@ var red = function() {
 
 //instantiate an object
 var o = { 'name' : 'Thluffy',
-	  age : 15,
-	  items : [10, 20, 30, 40],
-	  morestuff : {a : 1, b : 'ayo'},
-	  func : function(x) {
-	      return x+30;
-	  }
-	};
+	age : 15,
+    items : [10, 20, 30, 40],
+	morestuff : {a : 1, b : 'ayo'},
+	func : function(x) {
+	return x+30;
+	}
+};
 
 
 
 var b=document.getElementById('b');
-b.addEventListener('click',addItem);
+b.addEventListener('click',addItem);  
 
-var items = document.getElementsByTagName('li');
-for (var i = 0; i < items.length; i++) {
-    items[i].addEventListener("click", function() {this.remove()} );
-}
+
+
+
+
+
+
+
+
+
+
+
+
