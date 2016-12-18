@@ -32,17 +32,30 @@ var factR = function(n) {
     }
 };
 
+var changeHeader = function(){
+    document.getElementById("h").innerHTML =this.innerHTML;
+};
+
+var mouseOut = function(){
+    document.getElementById("h").innerHTML="Hello World!";
+}
 
 //add list item 
 var addItem = function() {
     var list = document.getElementById("thelist");
+    //getting list of elements
+    var listLi = list.getElementsByTagName("li");
     var newitem = document.createElement("li");
-    newitem.innerHTML = "item"+list.length;
+    var lastItem=listLi[listLi.length-1];
+    lastItem=lastItem.innerHTML;
+    console.log(lastItem);
+    newitem.innerHTML = "item "+(parseInt(lastItem.substring(lastItem.length-1).toString())+1).toString();
+    newitem.addEventListener("mouseover", changeHeader);
+    newitem.addEventListener("click", function(){
+        this.remove()
+    });
+    newitem.addEventListener("mouseout", mouseOut);
     list.appendChild(newitem);
-    var items = document.getElementsByTagName('li');
-    for (var i = 0; i < items.length; i++) {
-        items[i].addEventListener("click", function() {this.remove()} );
-    };
 };
 
 
@@ -71,14 +84,53 @@ var o = { 'name' : 'Thluffy',
 	}
 };
 
+var fib=function(num){
+    var x = 1;
+    var y = 0;
+    while (num >= 0){
+        var tmp = x;
+        x += y;
+        y = tmp;
+        num--;
+
+    }
+    return x;
+};
+
+var addFib = function() {
+    var list = document.getElementById("fibList");
+    //getting list of elements
+    var newitem = document.createElement("li");
+    newitem.innerHTML= fib (list.childElementCount)
+    newitem.addEventListener("mouseover", changeHeader);
+    newitem.addEventListener("click", function(){
+        this.remove()
+    });
+    newitem.addEventListener("mouseout", mouseOut);
+    list.appendChild(newitem);
+};
+
+
 
 
 var b=document.getElementById('b');
 b.addEventListener('click',addItem);  
 
 
+var items = document.getElementsByTagName('li');
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", function() {
+            this.remove()
+            } 
+        );
+        items[i].addEventListener("mouseover", changeHeader);
+        items[i].addEventListener("mouseout", mouseOut);
+        
+    };
 
-
+var f=document.getElementById('fibButton');
+f.addEventListener('click', addFib);
+console.log("hello");
 
 
 
