@@ -49,7 +49,7 @@ var addItem = function() {
     var lastItem=listLi[listLi.length-1];
     lastItem=lastItem.innerHTML;
     console.log(lastItem);
-    newitem.innerHTML = "item "+(parseInt(lastItem.substring(lastItem.length-1).toString())+1).toString();
+    newitem.innerHTML = "item "+(parseInt(lastItem.substring(lastItem.indexOf(" ")).toString())+1).toString();
     newitem.addEventListener("mouseover", changeHeader);
     newitem.addEventListener("click", function(){
         this.remove()
@@ -97,6 +97,7 @@ var fib=function(num){
     return x;
 };
 
+
 var addFib = function() {
     var list = document.getElementById("fibList");
     //getting list of elements
@@ -110,12 +111,8 @@ var addFib = function() {
     list.appendChild(newitem);
 };
 
-
-
-
 var b=document.getElementById('b');
 b.addEventListener('click',addItem);  
-
 
 var items = document.getElementsByTagName('li');
     for (var i = 0; i < items.length; i++) {
@@ -132,11 +129,35 @@ var f=document.getElementById('fibButton');
 f.addEventListener('click', addFib);
 console.log("hello");
 
+var addTwo = function() {
+    var list = document.getElementById("powersOfTwoList");
+    //getting list of elements
+    var listLi = list.getElementsByTagName("li");
+    var newitem = document.createElement("li");
+    if(listLi.length!=0){
+	var lastItem=listLi[listLi.length-1];
+	lastItem=lastItem.innerHTML;
+    };
+    if(listLi.length==0){
+	var lastItem="item 1";
+	
+    };
+    console.log(lastItem);
+    newitem.innerHTML = "item "+(2*(parseInt(lastItem.substring(lastItem.indexOf(" ")).toString()))).toString();
+    newitem.addEventListener("mouseover", changeHeader);
+    newitem.addEventListener("click", function(){
+        this.remove()
+    });
+    newitem.addEventListener("mouseout", mouseOut);
+    list.appendChild(newitem);
+};
 
+var square=function(num){
+    return Math.pow(2,num);
+};
 
-
-
-
-
+var g=document.getElementById('powersOfTwo');
+g.addEventListener('click', addTwo);
+console.log("hello");
 
 
